@@ -43,3 +43,17 @@
     >
   </body>
 </html>
+<script>
+   document.getElementById('formFrame').onload = function() {
+            const iframe = document.getElementById('formFrame');
+            iframe.contentWindow.addEventListener('submit', function() {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Terima Kasih!',
+                    text: 'Formulir Anda berhasil disubmit.',
+                    confirmButtonText: 'OK'
+                })
+                
+            });
+    }
+</script>
