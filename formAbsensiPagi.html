@@ -5,14 +5,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <base target="_top">
+    <base target="_top" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="icon"
-      type="image/png"
-      href="img/sulsel.png"
-    />
+    <link rel="icon" type="image/png" href="img/sulsel.png" />
     <title>Form Absensi Pagi</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script
@@ -29,8 +25,7 @@
     <div
       class="fixed inset-0 z-50 flex items-center justify-center fixed bg-gray-800 opacity-50"
       id="modal"
-    >
-    </div>
+    ></div>
     <iframe
       src="https://docs.google.com/forms/d/e/1FAIpQLScrACvwfKpoSLr7mTVz_P8DrAa1f4fobXBu93ROzThcUMlxLw/viewform?embedded=true"
       class="m-auto w-full h-[90vh] overflow-auto"
@@ -39,17 +34,4 @@
     >
   </body>
 </html>
-<script>
-   document.getElementById('formFrame').onload = function() {
-            const iframe = document.getElementById('formFrame');
-            iframe.contentWindow.addEventListener('submit', function() {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Terima Kasih!',
-                    text: 'Formulir Anda berhasil disubmit.',
-                    confirmButtonText: 'OK'
-                })
-                
-            });
-    }
-</script>
+<script></script>

@@ -47,7 +47,10 @@ function halamanAbsensi() {
             class="m-auto w-full h-[90vh] overflow-auto"
             id="formFrame"
             >Loading…</iframe
-          >`;
+          >
+          <script>formAbsensi();</script>
+
+          `;
             // absen("formAbsensiPagi");
           });
           dataDitampilkan = true;
@@ -74,7 +77,7 @@ function halamanAbsensi() {
       class="m-auto w-full h-[90vh] overflow-auto"
       id="formFrame"
       >Loading…</iframe
-    >`;
+    ><script>formAbsensi();</script>`;
           });
           dataDitampilkan = true;
         }
