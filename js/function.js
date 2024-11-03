@@ -14,10 +14,10 @@ function halamanAbsensi() {
   function showPosition(position) {
     const userLat = position.coords.latitude;
     const userLng = position.coords.longitude;
-    const targetLat = position.coords.latitude;
-    const targetLng = position.coords.longitude;
-    // const targetLat = -5.16528; // Latitude lokasi yang diinginkan
-    // const targetLng = 119.42061; // Longitude lokasi yang diinginkan
+    // const targetLat = position.coords.latitude;
+    // const targetLng = position.coords.longitude;
+    const targetLat = -5.16528; // Latitude lokasi yang diinginkan
+    const targetLng = 119.42061; // Longitude lokasi yang diinginkan
     const distance = calculateDistance(userLat, userLng, targetLat, targetLng);
     if (distance <= 20) {
       showModalWithIframe();
