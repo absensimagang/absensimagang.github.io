@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base target="_top" />
+    <meta charset="UTF-8" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+      defer
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script
+      src="https://kit.fontawesome.com/26d8d3b5e2.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div id="content">
+      <div class="w-full scroll-smooth bg-slate-100">
+        <div class="mx-auto min-h-screen overflow-hidden">
+          <div class="w-full max-xl:px-8 bg-red-700 md:py-3 ">
+            <div
+              class="max-w-screen-xl flex justify-center items-center gap-12 max-md:gap-6 mx-auto"
+            >
+              <img
+                class="h-32 w-32 max-md:w-16 max-md:h-16 max-sm:my-8"
+                src="https://upload.wikimedia.org/wikipedia/commons/6/67/Coat_of_arms_of_South_Sulawesi.svg"
+                alt=""
+              />
+              <div>
+                <small
+                  class="xl:text-2xl md:text-lg font-semibold inline-block pt-8 max-xl:pt-8 sm:block max-sm:hidden text-white"
+                  >SMART</small
+                >
+                <h1
+                  class="xl:text-4xl md:text-xl w-fit text-balance xl:leading-1 0 pt-2 max-xl:pt-0 pb-8 font-bold sm:block max-sm:hidden text-white"
+                >
+                  Sistem Manajemen Absensi Real Time untuk Peserta Magang dan
+                  Praktek Kerja Lapangan (PKL)
+                </h1>
+              </div>
+            </div>
+          </div>
+          <div
+            class="hidden max-sm:flex flex-col h-[55vh] px-8 max-sm:shadow-lg max-sm:shadow-red-900  box-border pt-8"
+          >
+            <small class="text-lg font-light mb-3 text-red-700">SMART</small>
+            <h1 class="text-4xl w-fit text-balance leading-[1.3em] font-medium text-red-700">
+              Sistem Manajemen Absensi Real Time untuk Peserta Magang dan
+              Praktek Kerja Lapangan (PKL)
+            </h1>
+          </div>
+          <div class="max-sm:py-16 block mx-auto max-w-[1080px] px-8">
+            <h3
+              class="text-4xl mt-8 mb-12 font-bold text-center text-red-500"
+            >
+              Menu Aplikasi
+            </h3>
+            <ul class="flex flex-wrap justify-center items-center border-purple-400 gap-8">
+              <li>
+                <button
+                  class="flex flex-col duration-200 rounded-xl overflow-hidden justify-center items-center font-semibold gap-8 bg-slate-300 hover:bg-red-700 hover:text-slate-200 transition-all hover:scale-105 shadow-sm p-8 hover:border-2 hover:border-red-700"
+                  type="button" onclick="location.href='halamanAbsen.html'"
+                >
+                  <p class="text-3xl text-center w-fit capitalize">Absensi</p>
+                  <i class="fa-solid fa-calendar-check fa-9x"></i>
+                </button>
+              </li>
+              <li>
+                <button
+                  class="flex flex-col duration-200 rounded-xl overflow-hidden justify-center items-center font-semibold gap-8 bg-slate-300 hover:bg-red-700 hover:text-slate-200 transition-all hover:scale-105 shadow-sm p-8 hover:border-2 hover:border-red-700"
+                  type="button"
+                >
+                  <p class="text-3xl text-center w-fit capitalize">Admin</p>
+                  <i class="fa-solid fa-user fa-9x"></i>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
