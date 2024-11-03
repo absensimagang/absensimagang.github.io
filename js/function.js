@@ -7,8 +7,8 @@ function halamanAbsensi() {
       const iframe = modal.querySelector("iframe");
       iframe.setAttribute("src", srcForm);
       modal.classList.replace("hidden", "flex");
-      dataDitampilkan = true;
     } else {
+      dataDitampilkan = true;
       Swal.fire({
         icon: "error",
         title: "Pesan error",
@@ -155,14 +155,15 @@ function halamanAbsensi() {
           absensi.addEventListener("click", () => {
             if (!localStorage.getItem("JamMasuk")) {
               Geolocation();
-              localStorage.setItem("JamMasuk", new Date().toISOString());
+              localStorage.setItem("JamMasuk", "https://docs.google.com/forms/d/e/1FAIpQLScrACvwfKpoSLr7mTVz_P8DrAa1f4fobXBu93ROzThcUMlxLw/viewform?embedded=true");
               dataDitampilkan = true;
             } else {
               stats.setAttribute(
                 "class",
                 "bg-slate-600 px-6 py-2 max-md:px-3 max-md:py-1 border-slate-300 rounded-xl font-bold text-slate-100 text-pretty"
               );
-              stats.appendChild(notsuccess);
+              stats.innerHTML=notsuccess;
+              // stats.appendChild(notsuccess);
               absensi.setAttribute("disabled", "true");
               absensi.setAttribute(
                 "class",
