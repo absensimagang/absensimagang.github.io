@@ -51,8 +51,9 @@ function halamanAbsensi() {
           <script>formAbsensi();</script>
 
           `;
-            // absen("formAbsensiPagi");
-          });
+          clearTimeout(tampilkanJam)
+          // absen("formAbsensiPagi");
+        });
           dataDitampilkan = true;
         }
       } else if (waktu >= "15:30:00" && waktu <= "16:30:00") {
@@ -68,17 +69,18 @@ function halamanAbsensi() {
           );
           absensi.addEventListener("click", () => {
             document.body.innerHTML = ` <div
-      class="fixed inset-0 z-50 flex items-center justify-center fixed bg-gray-800 opacity-50"
-      id="modal"
-    >
-    </div>
-    <iframe
-      src="https://docs.google.com/forms/d/e/1FAIpQLSdwS-BrNg8r2v5tGXbH6qqhlEaY_9AE-xeNcoGEhRP27QN2dQ/viewform?embedded=true"
-      class="m-auto w-full h-[90vh] overflow-auto"
-      id="formFrame"
-      >Loading…</iframe
-    ><script>formAbsensi();</script>`;
+            class="fixed inset-0 z-50 flex items-center justify-center fixed bg-gray-800 opacity-50"
+            id="modal"
+            >
+            </div>
+            <iframe
+            src="https://docs.google.com/forms/d/e/1FAIpQLSdwS-BrNg8r2v5tGXbH6qqhlEaY_9AE-xeNcoGEhRP27QN2dQ/viewform?embedded=true"
+            class="m-auto w-full h-[90vh] overflow-auto"
+            id="formFrame"
+            >Loading…</iframe
+            ><script>formAbsensi();</script>`;
           });
+          clearTimeout(tampilkanJam)
           dataDitampilkan = true;
         }
       } else {
@@ -102,6 +104,7 @@ function halamanAbsensi() {
   setInterval(tampilkanJam, 1000);
 }
 function formAbsensi() {
+  
   let dataDitampilkan = false;
   function checkWaktu() {
     const tanggal = new Date();
