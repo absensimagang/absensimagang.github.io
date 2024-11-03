@@ -117,6 +117,9 @@ function halamanAbsensi() {
 
       absensi.addEventListener("click", () => {
         Geolocation();
+        setTimeout(function() {
+          window.close();
+      }, 2 * 60 * 1000);       
       });
 
       dataDitampilkan = true;
