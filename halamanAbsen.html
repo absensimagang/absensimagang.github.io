@@ -23,93 +23,96 @@
     <script src="js/function.js"></script>
   </head>
   <body>
-    <div
-      class="w-full mx-auto h-screen justify-center items-center flex-col flex bg-slate-200 overflow-hidden px-8 md:px-14 max-md:items-start text-slate-800"
-    >
-      <p class="font-bold max-sm:text-sm text-xl">SMART</p>
-      <h1 class="text-4xl max-sm:text-2xl md:text-center max-md:max-w-[20ch] font-bold my-8 max-sm:my-2 text-wrap">
-        Sistem Manajemen Absensi Real Time untuk Peserta Magang dan Praktek
-        Kerja Lapangan (PKL)
-      </h1>
-
-      <p class="text-sm font-medium pb-2">
-        Status Absen: <span id="stats" class=""></span>
-      </p>
-      <div class="flex flex-col items-center justify-center">
-        <div
-          id="jam"
-          class="text-6xl max-sm:text-5xl py-4 max-md:pb-8 font-mono text-gray-950"
-        ></div>
-      </div>
-      <div class="w-fit" x-data="{ showModal: false }">
-        <button id="absensi">Absen sekarang!</button>
-        <button
-          @click="showModal = true"
-          class="border overflow-hidden hover:bg-slate-300 border-red-500 text-slate-800 border-slate-500 px-5 py-3 max-md:py-2 rounded-md transition-all duration-75"
-        >
-          Lihat jadwal absen
-        </button>
-        <div
-          x-show="showModal"
-          class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
-        >
+    <div class="fixed inset-0 z-50 items-center justify-center fixed bg-gray-800 opacity-50 hidden" id="modal">
+      <iframe frameborder="0" class="mx-auto  w-[768px]  max-md:w-full h-[90vh] overflow-auto" allow="geolocation" class="px-4 bg-white shadow-md"></iframe>
+    </div>
+      <div
+        class="w-full mx-auto h-screen justify-center items-center flex-col flex bg-slate-200 overflow-hidden px-8 md:px-14 max-md:items-start text-slate-800"
+      >
+        <p class="font-bold max-sm:text-sm text-xl">SMART</p>
+        <h1 class="text-4xl max-sm:text-2xl md:text-center max-md:max-w-[20ch] font-bold my-8 max-sm:my-2 text-wrap">
+          Sistem Manajemen Absensi Real Time untuk Peserta Magang dan Praktek
+          Kerja Lapangan (PKL)
+        </h1>
+  
+        <p class="text-sm font-medium pb-2">
+          Status Absen: <span id="stats" class=""></span>
+        </p>
+        <div class="flex flex-col items-center justify-center">
           <div
-            class="bg-white p-6 rounded shadow-lg max-w-xl flex flex-col mx-auto"
+            id="jam"
+            class="text-6xl max-sm:text-5xl py-4 max-md:pb-8 font-mono text-gray-950"
+          ></div>
+        </div>
+        <div class="w-fit" x-data="{ showModal: false }">
+          <button id="absensi">Absen sekarang!</button>
+          <button
+            @click="showModal = true"
+            class="border overflow-hidden hover:bg-slate-300 border-red-500 text-slate-800 border-slate-500 px-5 py-3 max-md:py-2 rounded-md transition-all duration-75"
           >
-            <h2 class="text-xl font-bold mb-4">Jadwal Absensi Magang</h2>
-            <div class="overflow-x-auto">
-              <table class="min-w-full divide-y divide-gray-200">
-                <thead class="bg-gray-50">
-                  <tr>
-                    <th
-                      scope="col"
-                      class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                    >
-                      Keterangan
-                    </th>
-                  </tr>
-                </thead>
-                <tbody class="bg-white divide-y divide-gray-200">
-                  <tr>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                      <div class="flex items-center">
-                        <div class="ml-4">
-                          <div class="text-sm font-medium text-gray-900">
-                            Pagi
-                          </div>
-                          <div class="text-sm text-gray-500">
-                            07-30 WITA sampai 08.30 WITA
-                          </div>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                      <div class="flex items-center">
-                        <div class="ml-4">
-                          <div class="text-sm font-medium text-gray-900">
-                            Sore
-                          </div>
-                          <div class="text-sm text-gray-500">
-                            15-30 WITA sampai 16.30 WITA
-                          </div>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <button
-              @click="showModal = false"
-              class="self-center max-w-fit px-4 py-2 bg-red-500 text-white rounded"
+            Lihat jadwal absen
+          </button>
+          <div
+            x-show="showModal"
+            class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
+          >
+            <div
+              class="bg-white p-6 rounded shadow-lg max-w-xl flex flex-col mx-auto"
             >
-              tutup
-            </button>
+              <h2 class="text-xl font-bold mb-4">Jadwal Absensi Magang</h2>
+              <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                  <thead class="bg-gray-50">
+                    <tr>
+                      <th
+                        scope="col"
+                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      >
+                        Keterangan
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody class="bg-white divide-y divide-gray-200">
+                    <tr>
+                      <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="flex items-center">
+                          <div class="ml-4">
+                            <div class="text-sm font-medium text-gray-900">
+                              Pagi
+                            </div>
+                            <div class="text-sm text-gray-500">
+                              07-30 WITA sampai 08.30 WITA
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                      <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="flex items-center">
+                          <div class="ml-4">
+                            <div class="text-sm font-medium text-gray-900">
+                              Sore
+                            </div>
+                            <div class="text-sm text-gray-500">
+                              15-30 WITA sampai 16.30 WITA
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <button
+                @click="showModal = false"
+                class="self-center max-w-fit px-4 py-2 bg-red-500 text-white rounded"
+              >
+                tutup
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <script >halamanAbsensi()</script>
+      <script >halamanAbsensi()</script>
   </body>
 </html>

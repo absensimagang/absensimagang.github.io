@@ -1,165 +1,12 @@
 function halamanAbsensi() {
   let dataDitampilkan = false;
-  function tampilkanJam() {
-    const tanggal = new Date();
-    let jam = tanggal.getHours();
-    let menit = tanggal.getMinutes();
-    let detik = tanggal.getSeconds();
-
-    // Tambahkan nol di depan angka yang kurang dari 10
-    jam = jam < 10 ? "0" + jam : jam;
-    menit = menit < 10 ? "0" + menit : menit;
-    detik = detik < 10 ? "0" + detik : detik;
-
-    const waktu = jam + ":" + menit + ":" + detik;
-    document.getElementById("jam").textContent = waktu;
-    // document.getElementById("jam").innerText = waktu;
-    function liveStats() {
-      const stats = document.getElementById("stats");
-      const success = document.createTextNode("Aktif");
-      const notsuccess = document.createTextNode("Tidak Aktif");
-      const absensi = document.getElementById("absensi");
-      if (waktu >= "07:30:00" && waktu <= "15:30:00") {
-        if (!dataDitampilkan) {
-          stats.setAttribute(
-            "class",
-            "bg-red-600 px-6 py-2 max-md:px-3 max-md:py-1 border-slate-300 rounded-xl font-bold text-slate-100 text-pretty"
-          );
-          stats.appendChild(success);
-          // absensi.setAttribute("disabled", "false");
-          absensi.setAttribute(
-            "class",
-            "border overflow-hidden text-white hover:bg-red-600 bg-red-800 text-red-50 border-red-500 px-5 py-3 max-sm:py-1 max-md:py-2 rounded-md transition-all duration-75"
-          );
-          absensi.addEventListener("click", () => {
-            document.body.innerHTML = `<div
-            class="fixed inset-0 z-50 flex items-center justify-center fixed bg-gray-800 opacity-50"
-            id="modal"
-          >
-            <div class="hidden bg-white p-8" id="pesan">
-              <h1 class="text-4xl font-bold">
-                Absensi tidak dapat dilanjutkan , silahkan ikuti instruksi sebelumnya
-              </h1>
-            </div>
-          </div>
-          <iframe
-            src="https://docs.google.com/forms/d/e/1FAIpQLScrACvwfKpoSLr7mTVz_P8DrAa1f4fobXBu93ROzThcUMlxLw/viewform?embedded=true"
-            class="m-auto w-full h-[90vh] overflow-auto"
-            id="formFrame"
-            >Loading…</iframe
-          >
-          <script>formAbsensi();</script>
-
-          `;
-          clearTimeout(tampilkanJam)
-          // absen("formAbsensiPagi");
-        });
-          dataDitampilkan = true;
-        }
-      } else if (waktu >= "15:30:00" && waktu <= "16:30:00") {
-        if (!dataDitampilkan) {
-          stats.setAttribute(
-            "class",
-            "bg-red-600 px-6 py-2 max-md:px-3 max-md:py-1 border-slate-300 rounded-xl font-bold text-slate-100 text-pretty"
-          );
-          stats.appendChild(success);
-          absensi.setAttribute(
-            "class",
-            "border overflow-hidden hover:bg-red-600 bg-red-800 text-red-50 border-red-500 px-5 py-3 max-md:py-2 max-sm:py-1 rounded-md transition-all duration-75"
-          );
-          absensi.addEventListener("click", () => {
-            document.body.innerHTML = ` <div
-            class="fixed inset-0 z-50 flex items-center justify-center fixed bg-gray-800 opacity-50"
-            id="modal"
-            >
-            </div>
-            <iframe
-            src="https://docs.google.com/forms/d/e/1FAIpQLSdwS-BrNg8r2v5tGXbH6qqhlEaY_9AE-xeNcoGEhRP27QN2dQ/viewform?embedded=true"
-            class="m-auto w-full h-[90vh] overflow-auto"
-            id="formFrame"
-            >Loading…</iframe
-            ><script>formAbsensi();</script>`;
-          });
-          clearTimeout(tampilkanJam)
-          dataDitampilkan = true;
-        }
-      } else {
-        if (!dataDitampilkan) {
-          stats.setAttribute(
-            "class",
-            "bg-slate-600 px-6 py-2 max-md:px-3 max-md:py-1 border-slate-300 rounded-xl font-bold text-slate-100 text-pretty"
-          );
-          stats.appendChild(notsuccess);
-          absensi.setAttribute("disabled", "true");
-          absensi.setAttribute(
-            "class",
-            "text-slate-400 overflow-hidden bg-slate-300 text-red-800 px-5 py-3 max-md:py-2 rounded-md transition-all duration-75"
-          );
-          dataDitampilkan = true;
-        }
-      }
-    }
-    liveStats();
-  }
-  setInterval(tampilkanJam, 1000);
-}
-function formAbsensi() {
-  
-  let dataDitampilkan = false;
-  function checkWaktu() {
-    const tanggal = new Date();
-    let jam = tanggal.getHours();
-    let menit = tanggal.getMinutes();
-    let detik = tanggal.getSeconds();
-
-    // Tambahkan nol di depan angka yang kurang dari 10
-    jam = jam < 10 ? "0" + jam : jam;
-    menit = menit < 10 ? "0" + menit : menit;
-    detik = detik < 10 ? "0" + detik : detik;
-
-    const waktu = jam + ":" + menit + ":" + detik;
-    if (waktu >= "07:30:00" && waktu <= "08:30:00") {
-      if (!dataDitampilkan) {
-        Swal.fire({
-          title: "Sebelum melakukan absensi",
-          text: "Izinkan terlebih dahulu untuk mengecek lokasi anda.",
-          icon: "info",
-          confirmButtonText: "OK",
-        });
-        Geolocation();
-        dataDitampilkan = true;
-      }
-    } else if (waktu >= "15:30:00" && waktu <= "16:30:00") {
-      if (!dataDitampilkan) {
-        Swal.fire({
-          title: "Sebelum melakukan absensi",
-          text: "Izinkan terlebih dahulu untuk mengecek lokasi anda.",
-          icon: "info",
-          confirmButtonText: "OK",
-        });
-        Geolocation();
-        dataDitampilkan = true;
-      }
-    } else {
-      if (!dataDitampilkan) {
-        dataDitampilkan = true;
-        Swal.fire({
-          icon: "error",
-          title: "Pesan error",
-          text: "absensi tidak dapat dilanjutkan karena ini bukan waktu absensi",
-          confirmButtonText: "OK",
-        }).then((result) => {
-          if (result.isConfirmed) {
-            window.location.href = "index.html";
-          }
-        });
-      }
-    }
-  }
-  function Geolocation() {
+  function Geolocation(srcForm) {
     if (navigator.geolocation && !dataDitampilkan) {
       navigator.geolocation.getCurrentPosition(showPosition, showError);
-      dataDitampilkan = true;
+      const modal = document.getElementById('modal');
+      const iframe = modal.querySelector('iframe');
+      iframe.setAttribute("src",srcForm)
+      modal.classList.replace("hidden","flex");
     } else {
       dataDitampilkan = true;
       Swal.fire({
@@ -178,12 +25,10 @@ function formAbsensi() {
   function showPosition(position) {
     var userLat = position.coords.latitude;
     var userLng = position.coords.longitude;
-    // var targetLat = -5.1921; // Ganti dengan latitude lokasi yang diinginkan
-    // var targetLng = 119.46398; // Ganti dengan longitude lokasi yang diinginkan
     var targetLat = -5.16528; // Ganti dengan latitude lokasi yang diinginkan
     var targetLng = 119.42061; // Ganti dengan longitude lokasi yang diinginkan
     var distance = calculateDistance(userLat, userLng, targetLat, targetLng);
-    if (distance <= 50) {
+    if (distance <= 20) {
       document.getElementById("modal").style.display = "none";
     } else {
       Swal.fire({
@@ -226,6 +71,7 @@ function formAbsensi() {
         }).then((result) => {
           if (result.isConfirmed) {
             window.location.reload();
+            localStorage.clear();
           }
         });
         break;
@@ -239,6 +85,7 @@ function formAbsensi() {
         }).then((result) => {
           if (result.isConfirmed) {
             window.location.reload();
+            localStorage.clear();
           }
         });
         break;
@@ -252,6 +99,7 @@ function formAbsensi() {
         }).then((result) => {
           if (result.isConfirmed) {
             window.location.reload();
+            localStorage.clear();
           }
         });
 
@@ -272,5 +120,89 @@ function formAbsensi() {
         break;
     }
   }
-  setInterval(checkWaktu, 1000);
+
+  function tampilkanJam() {
+    const tanggal = new Date();
+    let jam = tanggal.getHours();
+    let menit = tanggal.getMinutes();
+    let detik = tanggal.getSeconds();
+
+    // Tambahkan nol di depan angka yang kurang dari 10
+    jam = jam < 10 ? "0" + jam : jam;
+    menit = menit < 10 ? "0" + menit : menit;
+    detik = detik < 10 ? "0" + detik : detik;
+
+    const waktu = jam + ":" + menit + ":" + detik;
+    document.getElementById("jam").textContent = waktu;
+
+    function liveStats() {
+      const stats = document.getElementById("stats");
+      const success = document.createTextNode("Aktif");
+      const notsuccess = document.createTextNode("Tidak Aktif");
+      const absensi = document.getElementById("absensi");
+      if (waktu >= "07:30:00" && waktu <= "23:30:00") {
+        if (!dataDitampilkan) {
+          stats.setAttribute(
+            "class",
+            "bg-red-600 px-6 py-2 max-md:px-3 max-md:py-1 border-slate-300 rounded-xl font-bold text-slate-100 text-pretty"
+          );
+          stats.appendChild(success);
+          // absensi.setAttribute("disabled", "false");
+          absensi.setAttribute(
+            "class",
+            "border overflow-hidden text-white hover:bg-red-600 bg-red-800 text-red-50 border-red-500 px-5 py-3 max-sm:py-1 max-md:py-2 rounded-md transition-all duration-75"
+          );
+          absensi.addEventListener("click", () => {
+            if (!localStorage.getItem("JamMasuk")) {
+              Geolocation();
+              localStorage.setItem("JamMasuk");
+              dataDitampilkan = true;
+            } else {
+              stats.setAttribute(
+                "class",
+                "bg-slate-600 px-6 py-2 max-md:px-3 max-md:py-1 border-slate-300 rounded-xl font-bold text-slate-100 text-pretty"
+              );
+              stats.appendChild(notsuccess);
+              absensi.setAttribute("disabled", "true");
+              absensi.setAttribute(
+                "class",
+                "text-slate-400 overflow-hidden bg-slate-300 text-red-800 px-5 py-3 max-md:py-2 rounded-md transition-all duration-75"
+              );
+            }
+          });
+          dataDitampilkan = true;
+        }
+      } else if (waktu >= "01:30:00" && waktu <= "6:30:00") {
+        if (!dataDitampilkan) {
+          stats.setAttribute(
+            "class",
+            "bg-red-600 px-6 py-2 max-md:px-3 max-md:py-1 border-slate-300 rounded-xl font-bold text-slate-100 text-pretty"
+          );
+          stats.appendChild(success);
+          absensi.setAttribute(
+            "class",
+            "border overflow-hidden hover:bg-red-600 bg-red-800 text-red-50 border-red-500 px-5 py-3 max-md:py-2 max-sm:py-1 rounded-md transition-all duration-75"
+          );
+          absensi.addEventListener("click", () => {});
+        }
+      } else {
+        if (!dataDitampilkan) {
+          stats.setAttribute(
+            "class",
+            "bg-slate-600 px-6 py-2 max-md:px-3 max-md:py-1 border-slate-300 rounded-xl font-bold text-slate-100 text-pretty"
+          );
+          stats.appendChild(notsuccess);
+          absensi.setAttribute("disabled", "true");
+          absensi.setAttribute(
+            "class",
+            "text-slate-400 overflow-hidden bg-slate-300 text-red-800 px-5 py-3 max-md:py-2 rounded-md transition-all duration-75"
+          );
+          localStorage.clear();
+          dataDitampilkan = true;
+        }
+      }
+    }
+    liveStats();
+  }
+  setInterval(tampilkanJam, 1000);
 }
