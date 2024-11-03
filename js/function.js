@@ -1,41 +1,5 @@
 function halamanAbsensi() {
   let dataDitampilkan = false;
-  function absen(nama) {
-    var button = document.getElementById("absensi");
-    if (!button.disabled) {
-      if (nama == "formAbsensiPagi") {
-        document.body.innerHTML = `<div
-      class="fixed inset-0 z-50 flex items-center justify-center fixed bg-gray-800 opacity-50"
-      id="modal"
-    >
-      <div class="hidden bg-white p-8" id="pesan">
-        <h1 class="text-4xl font-bold">
-          Absensi tidak dapat dilanjutkan , silahkan ikuti instruksi sebelumnya
-        </h1>
-      </div>
-    </div>
-    <iframe
-      src="https://docs.google.com/forms/d/e/1FAIpQLScrACvwfKpoSLr7mTVz_P8DrAa1f4fobXBu93ROzThcUMlxLw/viewform?embedded=true"
-      class="m-auto w-full h-[90vh] overflow-auto"
-      id="formFrame"
-      >Loading…</iframe
-    >`;
-      }else if(nama == "formAbsensiSore"){
-        document.body.innerHTML = ` <div
-      class="fixed inset-0 z-50 flex items-center justify-center fixed bg-gray-800 opacity-50"
-      id="modal"
-    >
-    </div>
-    <iframe
-      src="https://docs.google.com/forms/d/e/1FAIpQLSdwS-BrNg8r2v5tGXbH6qqhlEaY_9AE-xeNcoGEhRP27QN2dQ/viewform?embedded=true"
-      class="m-auto w-full h-[90vh] overflow-auto"
-      id="formFrame"
-      >Loading…</iframe
-    >`
-      }
-      // window.location.href = nama;
-    }
-  }
   function tampilkanJam() {
     const tanggal = new Date();
     let jam = tanggal.getHours();
@@ -68,9 +32,24 @@ function halamanAbsensi() {
             "border overflow-hidden text-white hover:bg-red-600 bg-red-800 text-red-50 border-red-500 px-5 py-3 max-sm:py-1 max-md:py-2 rounded-md transition-all duration-75"
           );
           absensi.addEventListener("click", () => {
-            absen("formAbsensiPagi");
+            document.body.innerHTML = `<div
+            class="fixed inset-0 z-50 flex items-center justify-center fixed bg-gray-800 opacity-50"
+            id="modal"
+          >
+            <div class="hidden bg-white p-8" id="pesan">
+              <h1 class="text-4xl font-bold">
+                Absensi tidak dapat dilanjutkan , silahkan ikuti instruksi sebelumnya
+              </h1>
+            </div>
+          </div>
+          <iframe
+            src="https://docs.google.com/forms/d/e/1FAIpQLScrACvwfKpoSLr7mTVz_P8DrAa1f4fobXBu93ROzThcUMlxLw/viewform?embedded=true"
+            class="m-auto w-full h-[90vh] overflow-auto"
+            id="formFrame"
+            >Loading…</iframe
+          >`;
+            // absen("formAbsensiPagi");
           });
-          // absen("formAbsensiSore");
           dataDitampilkan = true;
         }
       } else if (waktu >= "15:30:00" && waktu <= "16:30:00") {
@@ -85,7 +64,17 @@ function halamanAbsensi() {
             "border overflow-hidden hover:bg-red-600 bg-red-800 text-red-50 border-red-500 px-5 py-3 max-md:py-2 max-sm:py-1 rounded-md transition-all duration-75"
           );
           absensi.addEventListener("click", () => {
-            absen("formAbsensiSore");
+            document.body.innerHTML = ` <div
+      class="fixed inset-0 z-50 flex items-center justify-center fixed bg-gray-800 opacity-50"
+      id="modal"
+    >
+    </div>
+    <iframe
+      src="https://docs.google.com/forms/d/e/1FAIpQLSdwS-BrNg8r2v5tGXbH6qqhlEaY_9AE-xeNcoGEhRP27QN2dQ/viewform?embedded=true"
+      class="m-auto w-full h-[90vh] overflow-auto"
+      id="formFrame"
+      >Loading…</iframe
+    >`;
           });
           dataDitampilkan = true;
         }
