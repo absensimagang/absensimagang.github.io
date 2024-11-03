@@ -3,10 +3,10 @@ function halamanAbsensi() {
   function Geolocation(srcForm) {
     if (navigator.geolocation && !dataDitampilkan) {
       navigator.geolocation.getCurrentPosition(showPosition, showError);
-      const modal = document.getElementById('modal');
-      const iframe = modal.querySelector('iframe');
-      iframe.setAttribute("src",srcForm)
-      modal.classList.replace("hidden","flex");
+      const modal = document.getElementById("modal");
+      const iframe = modal.querySelector("iframe");
+      iframe.setAttribute("src", srcForm);
+      modal.classList.replace("hidden", "flex");
       dataDitampilkan = true;
     } else {
       Swal.fire({
@@ -155,7 +155,7 @@ function halamanAbsensi() {
           absensi.addEventListener("click", () => {
             if (!localStorage.getItem("JamMasuk")) {
               Geolocation();
-              localStorage.setItem("JamMasuk");
+              localStorage.setItem("JamMasuk", new Date().toISOString());
               dataDitampilkan = true;
             } else {
               stats.setAttribute(
