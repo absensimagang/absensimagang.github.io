@@ -25,7 +25,7 @@ function halamanAbsensi() {
       const success = document.createTextNode("Aktif");
       const notsuccess = document.createTextNode("Tidak Aktif");
       const absensi = document.getElementById("absensi");
-      if (waktu >= "07:30:00" && waktu <= "08:30:00") {
+      if (waktu >= "07:30:00" && waktu <= "13:30:00") {
         if (!dataDitampilkan) {
           stats.setAttribute(
             "class",
@@ -93,7 +93,7 @@ function formAbsensi() {
     detik = detik < 10 ? "0" + detik : detik;
 
     const waktu = jam + ":" + menit + ":" + detik;
-    if (waktu >= "07:30:00" && waktu <= "12:30:00") {
+    if (waktu >= "07:30:00" && waktu <= "13:30:00") {
       if (!dataDitampilkan) {
         Swal.fire({
           title: "Sebelum melakukan absensi",
@@ -153,8 +153,10 @@ function formAbsensi() {
   function showPosition(position) {
     var userLat = position.coords.latitude;
     var userLng = position.coords.longitude;
-    var targetLat = -5.16528; // Ganti dengan latitude lokasi yang diinginkan
-    var targetLng = 119.42061; // Ganti dengan longitude lokasi yang diinginkan
+    var targetLat = -5.19210; // Ganti dengan latitude lokasi yang diinginkan
+    var targetLng = 119.46398; // Ganti dengan longitude lokasi yang diinginkan
+    // var targetLat = -5.16528; // Ganti dengan latitude lokasi yang diinginkan
+    // var targetLng = 119.42061; // Ganti dengan longitude lokasi yang diinginkan
     var distance = calculateDistance(userLat, userLng, targetLat, targetLng);
     if (distance <= 10) {
       document.getElementById("modal").style.display = "none";
