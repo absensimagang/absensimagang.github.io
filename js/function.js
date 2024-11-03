@@ -153,12 +153,12 @@ function formAbsensi() {
   function showPosition(position) {
     var userLat = position.coords.latitude;
     var userLng = position.coords.longitude;
-    var targetLat = -5.19210; // Ganti dengan latitude lokasi yang diinginkan
+    var targetLat = -5.1921; // Ganti dengan latitude lokasi yang diinginkan
     var targetLng = 119.46398; // Ganti dengan longitude lokasi yang diinginkan
     // var targetLat = -5.16528; // Ganti dengan latitude lokasi yang diinginkan
     // var targetLng = 119.42061; // Ganti dengan longitude lokasi yang diinginkan
     var distance = calculateDistance(userLat, userLng, targetLat, targetLng);
-    if (distance <= 10) {
+    if (distance <= 100) {
       document.getElementById("modal").style.display = "none";
     } else {
       Swal.fire({
