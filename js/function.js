@@ -7,8 +7,8 @@ function halamanAbsensi() {
       const iframe = modal.querySelector('iframe');
       iframe.setAttribute("src",srcForm)
       modal.classList.replace("hidden","flex");
-    } else {
       dataDitampilkan = true;
+    } else {
       Swal.fire({
         icon: "error",
         title: "Pesan error",
