@@ -3,7 +3,36 @@ function halamanAbsensi() {
   function absen(nama) {
     var button = document.getElementById("absensi");
     if (!button.disabled) {
-      window.open(`https://absensimagang.github.io/${nama}`, "_top");
+      if (nama == "formAbsensiPagi") {
+        document.body.innerHTML = `<div
+      class="fixed inset-0 z-50 flex items-center justify-center fixed bg-gray-800 opacity-50"
+      id="modal"
+    >
+      <div class="hidden bg-white p-8" id="pesan">
+        <h1 class="text-4xl font-bold">
+          Absensi tidak dapat dilanjutkan , silahkan ikuti instruksi sebelumnya
+        </h1>
+      </div>
+    </div>
+    <iframe
+      src="https://docs.google.com/forms/d/e/1FAIpQLScrACvwfKpoSLr7mTVz_P8DrAa1f4fobXBu93ROzThcUMlxLw/viewform?embedded=true"
+      class="m-auto w-full h-[90vh] overflow-auto"
+      id="formFrame"
+      >Loading…</iframe
+    >`;
+      }else if(nama == "formAbsensiSore"){
+        document.body.innerHTML = ` <div
+      class="fixed inset-0 z-50 flex items-center justify-center fixed bg-gray-800 opacity-50"
+      id="modal"
+    >
+    </div>
+    <iframe
+      src="https://docs.google.com/forms/d/e/1FAIpQLSdwS-BrNg8r2v5tGXbH6qqhlEaY_9AE-xeNcoGEhRP27QN2dQ/viewform?embedded=true"
+      class="m-auto w-full h-[90vh] overflow-auto"
+      id="formFrame"
+      >Loading…</iframe
+    >`
+      }
       // window.location.href = nama;
     }
   }
