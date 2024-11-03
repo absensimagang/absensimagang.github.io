@@ -1,11 +1,11 @@
 function halamanAbsensi() {
   let dataDitampilkan = false;
-  function Geolocation(srcForm) {
+  function Geolocation() {
     if (navigator.geolocation && !dataDitampilkan) {
       navigator.geolocation.getCurrentPosition(showPosition, showError);
       const modal = document.getElementById("modal");
       const iframe = modal.querySelector("iframe");
-      iframe.setAttribute("src", srcForm);
+      iframe.setAttribute("src", `${localStorage.getItem('JamMasuk')}`);
       modal.classList.replace("hidden", "flex");
     } else {
       dataDitampilkan = true;
@@ -153,7 +153,7 @@ function halamanAbsensi() {
             "border overflow-hidden text-white hover:bg-red-600 bg-red-800 text-red-50 border-red-500 px-5 py-3 max-sm:py-1 max-md:py-2 rounded-md transition-all duration-75"
           );
           absensi.addEventListener("click", () => {
-            if (!localStorage.getItem("JamMasuk")) {
+            if (localStorage.getItem("JamMasuk")) {
               Geolocation();
               localStorage.setItem("JamMasuk", "https://docs.google.com/forms/d/e/1FAIpQLScrACvwfKpoSLr7mTVz_P8DrAa1f4fobXBu93ROzThcUMlxLw/viewform?embedded=true");
               dataDitampilkan = true;
