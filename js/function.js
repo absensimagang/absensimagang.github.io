@@ -3,7 +3,7 @@ function halamanAbsensi() {
   function absen(nama) {
     var button = document.getElementById("absensi");
     if (!button.disabled) {
-      window.open(`https://absensimagang.github.io/${nama}`,'_top')
+      window.open(`https://absensimagang.github.io/${nama}`, "_top");
       // window.location.href = nama;
     }
   }
