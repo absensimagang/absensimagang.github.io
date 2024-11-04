@@ -16,10 +16,10 @@ function halamanAbsensi() {
     const userLng = position.coords.longitude;
     // const targetLat = position.coords.latitude;
     // const targetLng = position.coords.longitude;
-    const targetLat = -5.16528; // Latitude lokasi yang diinginkan
-    const targetLng = 119.42061; // Longitude lokasi yang diinginkan
+    const targetLat = -5.1656; // Latitude lokasi yang diinginkan
+    const targetLng = 119.42098; // Longitude lokasi yang diinginkan
     const distance = calculateDistance(userLat, userLng, targetLat, targetLng);
-    if (distance <= 100) {
+    if (distance <= 50) {
       showModalWithIframe();
     } else {
       showErrorModal("Anda berada di luar jangkauan lokasi yang diizinkan.");
