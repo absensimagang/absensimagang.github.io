@@ -61,10 +61,9 @@ function halamanAbsensi() {
     let detik = String(tanggal.getSeconds()).padStart(2, "0");
     const waktu = `${jam}:${menit}:${detik}`;
 
-    const url =
-      waktu >= "07:30:00" && waktu <= "23:30:00"
-        ? "https://docs.google.com/forms/d/e/1FAIpQLScrACvwfKpoSLr7mTVz_P8DrAa1f4fobXBu93ROzThcUMlxLw/viewform?embedded=true"
-        : "https://docs.google.com/forms/d/e/1FAIpQLSdwS-BrNg8r2v5tGXbH6qqhlEaY_9AE-xeNcoGEhRP27QN2dQ/viewform?embedded=true";
+    const url = (waktu >= "07:30:00" && waktu <= "08:30:00")
+    ? "https://docs.google.com/forms/d/e/1FAIpQLScrACvwfKpoSLr7mTVz_P8DrAa1f4fobXBu93ROzThcUMlxLw/viewform?embedded=true"
+    : "https://docs.google.com/forms/d/e/1FAIpQLSdwS-BrNg8r2v5tGXbH6qqhlEaY_9AE-xeNcoGEhRP27QN2dQ/viewform?embedded=true";
 
     const modal = document.getElementById("modal");
     const iframe = modal.querySelector("iframe");
