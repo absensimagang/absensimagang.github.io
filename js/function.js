@@ -19,7 +19,7 @@ function halamanAbsensi() {
     const targetLat = -5.16528; // Latitude lokasi yang diinginkan
     const targetLng = 119.42061; // Longitude lokasi yang diinginkan
     const distance = calculateDistance(userLat, userLng, targetLat, targetLng);
-    if (distance <= 20) {
+    if (distance <= 100) {
       showModalWithIframe();
     } else {
       showErrorModal("Anda berada di luar jangkauan lokasi yang diizinkan.");
