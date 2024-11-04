@@ -24,7 +24,7 @@ function halamanAbsensi() {
     if (waktu >= "07:30:00" && waktu <= "08:30:00"){
       targetLat = -5.16565;
       targetLng = 119.42098;
-    } else if(waktu >= "15:30:00" && waktu <= "17:00:00") {
+    } else if(waktu >= "15:30:00" && waktu <= "23:00:00") {
       targetLat = userLat;
       targetLng = userLng;
     }
@@ -73,7 +73,7 @@ function halamanAbsensi() {
     let url;
     if (waktu >= "07:30:00" && waktu <= "08:30:00"){
       url = "https://docs.google.com/forms/d/e/1FAIpQLScrACvwfKpoSLr7mTVz_P8DrAa1f4fobXBu93ROzThcUMlxLw/viewform?embedded=true";
-    } else if(waktu >= "15:30:00" && waktu <= "17:00:00") {
+    } else if(waktu >= "15:30:00" && waktu <= "23:00:00") {
       url = "https://docs.google.com/forms/d/e/1FAIpQLSdwS-BrNg8r2v5tGXbH6qqhlEaY_9AE-xeNcoGEhRP27QN2dQ/viewform?embedded=true"
     }
     const modal = document.getElementById("modal");
@@ -115,7 +115,7 @@ function halamanAbsensi() {
     const absensi = document.getElementById("absensi");
     const isWorkingHours =
       (waktu >= "07:30:00" && waktu <= "08:30:00") ||
-      (waktu >= "15:30:00" && waktu <= "17:00:00");
+      (waktu >= "15:30:00" && waktu <= "23:00:00");
     if (isWorkingHours && !dataDitampilkan) {
       stats.className =
         "bg-red-600 px-6 py-2 max-md:px-3 max-md:py-1 border-slate-300 rounded-xl font-bold text-slate-100 text-pretty";
