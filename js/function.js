@@ -21,10 +21,10 @@ function halamanAbsensi() {
     let targetLng;
     let detik = String(tanggal.getSeconds()).padStart(2, "0");
     const waktu = `${jam}:${menit}:${detik}`;
-    if (waktu >= "07:30:00" && waktu <= "08:30:00"){
+    if (waktu >= "07:30:00" && waktu <= "08:30:00") {
       targetLat = -5.16565;
       targetLng = 119.42098;
-    } else if(waktu >= "15:30:00" && waktu <= "23:00:00") {
+    } else if (waktu >= "15:30:00" && waktu <= "16:30:00") {
       targetLat = userLat;
       targetLng = userLng;
     }
@@ -70,16 +70,19 @@ function halamanAbsensi() {
     let menit = String(tanggal.getMinutes()).padStart(2, "0");
     let detik = String(tanggal.getSeconds()).padStart(2, "0");
     const waktu = `${jam}:${menit}:${detik}`;
-    let url;
-    if (waktu >= "07:30:00" && waktu <= "08:30:00"){
-      url = "https://docs.google.com/forms/d/e/1FAIpQLScrACvwfKpoSLr7mTVz_P8DrAa1f4fobXBu93ROzThcUMlxLw/viewform?embedded=true";
-    } else if(waktu >= "15:30:00" && waktu <= "23:00:00") {
-      url = "https://docs.google.com/forms/d/e/1FAIpQLSdwS-BrNg8r2v5tGXbH6qqhlEaY_9AE-xeNcoGEhRP27QN2dQ/viewform?embedded=true"
-    }
     const modal = document.getElementById("modal");
-    const iframe = modal.querySelector("iframe");
-    iframe.setAttribute("src", url);
+    const iframe = modal.querySelector("#modal div iframe");
+    let url;
     modal.classList.replace("hidden", "flex");
+    if (waktu >= "07:30:00" && waktu <= "08:30:00") {
+      url =
+        "https://docs.google.com/forms/d/e/1FAIpQLScrACvwfKpoSLr7mTVz_P8DrAa1f4fobXBu93ROzThcUMlxLw/viewform";
+      iframe.setAttribute("src", url);
+    } else if (waktu >= "15:30:00" && waktu <= "16:30:00") {
+      url =
+        "https://docs.google.com/forms/d/e/1FAIpQLSdwS-BrNg8r2v5tGXbH6qqhlEaY_9AE-xeNcoGEhRP27QN2dQ/viewform";
+      iframe.setAttribute("src", url);
+    }
   }
 
   function showError(error) {
@@ -106,7 +109,7 @@ function halamanAbsensi() {
     document.querySelector("#modal div").addEventListener("click", () => {
       modal.classList.replace("flex", "hidden");
     });
-    
+
     updateStats(waktu);
   }
 
@@ -115,7 +118,7 @@ function halamanAbsensi() {
     const absensi = document.getElementById("absensi");
     const isWorkingHours =
       (waktu >= "07:30:00" && waktu <= "08:30:00") ||
-      (waktu >= "15:30:00" && waktu <= "23:00:00");
+      (waktu >= "15:30:00" && waktu <= "16:30:00");
     if (isWorkingHours && !dataDitampilkan) {
       stats.className =
         "bg-red-600 px-6 py-2 max-md:px-3 max-md:py-1 border-slate-300 rounded-xl font-bold text-slate-100 text-pretty";
@@ -125,9 +128,6 @@ function halamanAbsensi() {
 
       absensi.addEventListener("click", () => {
         Geolocation();
-        setTimeout(function() {
-          window.close();
-      }, 2 * 60 * 1000);       
       });
 
       dataDitampilkan = true;
