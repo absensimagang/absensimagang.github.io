@@ -12,14 +12,24 @@ function halamanAbsensi() {
   }
 
   function showPosition(position) {
+    const tanggal = new Date();
+    let jam = String(tanggal.getHours()).padStart(2, "0");
+    let menit = String(tanggal.getMinutes()).padStart(2, "0");
     const userLat = position.coords.latitude;
     const userLng = position.coords.longitude;
-    // const targetLat = position.coords.latitude;
-    // const targetLng = position.coords.longitude;
-    const targetLat = -5.1656; // Latitude lokasi yang diinginkan
-    const targetLng = 119.42098; // Longitude lokasi yang diinginkan
+    let targetLat;
+    let targetLng;
+    let detik = String(tanggal.getSeconds()).padStart(2, "0");
+    const waktu = `${jam}:${menit}:${detik}`;
+    if (waktu >= "07:30:00" && waktu <= "08:30:00"){
+      targetLat = -5.16565;
+      targetLng = 119.42098;
+    } else if(waktu >= "15:30:00" && waktu <= "17:00:00") {
+      targetLat = userLat;
+      targetLng = userLng;
+    }
     const distance = calculateDistance(userLat, userLng, targetLat, targetLng);
-    if (distance <= 50) {
+    if (distance <= 10) {
       showModalWithIframe();
     } else {
       showErrorModal("Anda berada di luar jangkauan lokasi yang diizinkan.");
@@ -60,11 +70,12 @@ function halamanAbsensi() {
     let menit = String(tanggal.getMinutes()).padStart(2, "0");
     let detik = String(tanggal.getSeconds()).padStart(2, "0");
     const waktu = `${jam}:${menit}:${detik}`;
-
-    const url = (waktu >= "07:30:00" && waktu <= "08:30:00")
-    ? "https://docs.google.com/forms/d/e/1FAIpQLScrACvwfKpoSLr7mTVz_P8DrAa1f4fobXBu93ROzThcUMlxLw/viewform?embedded=true"
-    : "https://docs.google.com/forms/d/e/1FAIpQLSdwS-BrNg8r2v5tGXbH6qqhlEaY_9AE-xeNcoGEhRP27QN2dQ/viewform?embedded=true";
-
+    let url;
+    if (waktu >= "07:30:00" && waktu <= "08:30:00"){
+      url = "https://docs.google.com/forms/d/e/1FAIpQLScrACvwfKpoSLr7mTVz_P8DrAa1f4fobXBu93ROzThcUMlxLw/viewform?embedded=true";
+    } else if(waktu >= "15:30:00" && waktu <= "17:00:00") {
+      url = "https://docs.google.com/forms/d/e/1FAIpQLSdwS-BrNg8r2v5tGXbH6qqhlEaY_9AE-xeNcoGEhRP27QN2dQ/viewform?embedded=true"
+    }
     const modal = document.getElementById("modal");
     const iframe = modal.querySelector("iframe");
     iframe.setAttribute("src", url);
@@ -92,11 +103,10 @@ function halamanAbsensi() {
     let detik = String(tanggal.getSeconds()).padStart(2, "0");
     const waktu = `${jam}:${menit}:${detik}`;
     document.getElementById("jam").textContent = waktu;
-
     document.querySelector("#modal div").addEventListener("click", () => {
       modal.classList.replace("flex", "hidden");
     });
-
+    
     updateStats(waktu);
   }
 
@@ -105,8 +115,7 @@ function halamanAbsensi() {
     const absensi = document.getElementById("absensi");
     const isWorkingHours =
       (waktu >= "07:30:00" && waktu <= "08:30:00") ||
-      (waktu >= "15:30:00" && waktu <= "16:30:00");
-
+      (waktu >= "15:30:00" && waktu <= "17:00:00");
     if (isWorkingHours && !dataDitampilkan) {
       stats.className =
         "bg-red-600 px-6 py-2 max-md:px-3 max-md:py-1 border-slate-300 rounded-xl font-bold text-slate-100 text-pretty";
