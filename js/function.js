@@ -19,7 +19,7 @@ function halamanAbsensi() {
 
     const distance = calculateDistance(userLat, userLng, targetLat, targetLng);
 
-    if (distance <= 20) {
+    if (distance <= 100) {
         showModalWithIframe();
     } else {
       Swal.fire({
