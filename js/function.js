@@ -11,13 +11,12 @@ function halamanAbsensi() {
     }
   }
 
-  
   function showPosition(position) {
     const userLat = position.coords.latitude;
     const userLng = position.coords.longitude;
-    -5.165650, 119.420982
-    targetLat = -5.165650;
-    targetLng = 119.420982;
+    // -5.16565, 119.420982;
+    const targetLat = -5.16565;
+    const targetLng = 119.420982;
     const distance = calculateDistance(userLat, userLng, targetLat, targetLng);
     if (distance <= 20) {
       showModalWithIframe();
