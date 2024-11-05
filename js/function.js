@@ -22,6 +22,16 @@ function halamanAbsensi() {
     if (distance <= 20) {
         showModalWithIframe();
     } else {
+      Swal.fire({
+        icon: "error",
+        title: "Pesan error",
+        text: "Anda berada di luar jangkauan lokasi yang diizinkan.",
+        confirmButtonText: "OK",
+      }).then((result) => {
+        if(result.isConfirmed){
+          Geolocation();
+        }
+      });
         showErrorModal("Anda berada di luar jangkauan lokasi yang diizinkan.");
     }
 }
