@@ -14,16 +14,18 @@ function halamanAbsensi() {
   function showPosition(position) {
     const userLat = position.coords.latitude;
     const userLng = position.coords.longitude;
-    // -5.16565, 119.420982;
-    const targetLat = -5.16565;
-    const targetLng = 119.420982;
+    const targetLat = -5.16565;  // Latitude lokasi target
+    const targetLng = 119.420982;  // Longitude lokasi target
+
     const distance = calculateDistance(userLat, userLng, targetLat, targetLng);
+
     if (distance <= 20) {
-      showModalWithIframe();
+        showModalWithIframe();
     } else {
-      showErrorModal("Anda berada di luar jangkauan lokasi yang diizinkan.");
+        showErrorModal("Anda berada di luar jangkauan lokasi yang diizinkan.");
     }
-  }
+}
+
 
   function calculateDistance(lat1, lon1, lat2, lon2) {
     const R = 6371e3; // Radius bumi dalam meter
