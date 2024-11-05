@@ -14,13 +14,13 @@ function halamanAbsensi() {
   function showPosition(position) {
     const userLat = position.coords.latitude;
     const userLng = position.coords.longitude;
-    const targetLat = -5.16565;  // Latitude lokasi target
-    const targetLng = 119.420982;  // Longitude lokasi target
+    const targetLat = -5.16565; // Latitude lokasi target
+    const targetLng = 119.420982; // Longitude lokasi target
 
     const distance = calculateDistance(userLat, userLng, targetLat, targetLng);
 
-    if (distance <= 20) {
-        showModalWithIframe();
+    if (distance <= 50) {
+      showModalWithIframe();
     } else {
       Swal.fire({
         icon: "error",
@@ -28,13 +28,12 @@ function halamanAbsensi() {
         text: "Anda berada di luar jangkauan lokasi yang diizinkan.",
         confirmButtonText: "OK",
       }).then((result) => {
-        if(result.isConfirmed){
+        if (result.isConfirmed) {
           Geolocation();
         }
       });
     }
-}
-
+  }
 
   function calculateDistance(lat1, lon1, lat2, lon2) {
     const R = 6371e3; // Radius bumi dalam meter
@@ -74,7 +73,7 @@ function halamanAbsensi() {
     const iframe = modal.querySelector("#modal div iframe");
     let url;
     modal.classList.replace("hidden", "flex");
-    if (waktu >= "07:30:00" && waktu <= "12:30:00") {
+    if (waktu >= "07:30:00" && waktu <= "08:30:00") {
       url =
         "https://docs.google.com/forms/d/e/1FAIpQLScrACvwfKpoSLr7mTVz_P8DrAa1f4fobXBu93ROzThcUMlxLw/viewform";
       iframe.setAttribute("src", url);
@@ -117,7 +116,7 @@ function halamanAbsensi() {
     const stats = document.getElementById("stats");
     const absensi = document.getElementById("absensi");
     const isWorkingHours =
-      (waktu >= "07:30:00" && waktu <= "12:30:00") ||
+      (waktu >= "07:30:00" && waktu <= "08:30:00") ||
       (waktu >= "15:30:00" && waktu <= "16:30:00");
     if (isWorkingHours && !dataDitampilkan) {
       stats.className =
