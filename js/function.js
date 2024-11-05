@@ -32,7 +32,6 @@ function halamanAbsensi() {
           Geolocation();
         }
       });
-        showErrorModal("Anda berada di luar jangkauan lokasi yang diizinkan.");
     }
 }
 
