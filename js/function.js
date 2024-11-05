@@ -12,22 +12,10 @@ function halamanAbsensi() {
   }
 
   function showPosition(position) {
-    const tanggal = new Date();
-    let jam = String(tanggal.getHours()).padStart(2, "0");
-    let menit = String(tanggal.getMinutes()).padStart(2, "0");
     const userLat = position.coords.latitude;
     const userLng = position.coords.longitude;
-    let targetLat;
-    let targetLng;
-    let detik = String(tanggal.getSeconds()).padStart(2, "0");
-    const waktu = `${jam}:${menit}:${detik}`;
-    if (waktu >= "07:30:00" && waktu <= "08:30:00") {
-      targetLat = -5.16565;
-      targetLng = 119.42098;
-    } else if (waktu >= "15:30:00" && waktu <= "16:30:00") {
-      targetLat = userLat;
-      targetLng = userLng;
-    }
+    targetLat = -5.16565;
+    targetLng = 119.420982;
     const distance = calculateDistance(userLat, userLng, targetLat, targetLng);
     if (distance <= 10) {
       showModalWithIframe();
@@ -74,7 +62,7 @@ function halamanAbsensi() {
     const iframe = modal.querySelector("#modal div iframe");
     let url;
     modal.classList.replace("hidden", "flex");
-    if (waktu >= "07:30:00" && waktu <= "08:30:00") {
+    if (waktu >= "07:30:00" && waktu <= "12:30:00") {
       url =
         "https://docs.google.com/forms/d/e/1FAIpQLScrACvwfKpoSLr7mTVz_P8DrAa1f4fobXBu93ROzThcUMlxLw/viewform";
       iframe.setAttribute("src", url);
@@ -117,7 +105,7 @@ function halamanAbsensi() {
     const stats = document.getElementById("stats");
     const absensi = document.getElementById("absensi");
     const isWorkingHours =
-      (waktu >= "07:30:00" && waktu <= "08:30:00") ||
+      (waktu >= "07:30:00" && waktu <= "12:30:00") ||
       (waktu >= "15:30:00" && waktu <= "16:30:00");
     if (isWorkingHours && !dataDitampilkan) {
       stats.className =
